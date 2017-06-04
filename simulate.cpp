@@ -14,15 +14,9 @@ void simulator1(int A[50], int n)
 		cout<<"\n";
 		while( j < n)
 		{
-			if(A[j] > q && flag == -1)   // cut and serve
+			if(A[j] >= q && flag == -1)   // cut and serve
 			{
 				A[j] -= q;
-				flag = 1;
-			}
-			
-			else if(A[j] == q && flag == -1)   // give completely
-			{
-				A[j] = 0;
 				flag = 1;
 			}
 			
