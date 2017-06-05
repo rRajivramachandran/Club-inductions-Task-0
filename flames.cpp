@@ -5,32 +5,40 @@ using namespace std;
 
 int main()
 {
-	int count = 0,counter,n,i,j,k,rel;
+	int count = 0,counter,n,i,j,l,k,rel,count1,count2;
 	char A[50],B[50],c;
 	bool C[6];
 	cout<<"Enter number of test cases:";
 	cin>>n;
 	for(k = 0; k < n; k++)
 	{   
-	    fflus
+	    
 		cout<<"Enter name 1:";
 		gets(A);
 		cout<<"Enter name 2:";
 		gets(B);
 		
-		for(i = 0; i < strlen(A); i++)
-		{
-			c = A[i];
-			for(j = 0; j < strlen(B); j++)
-			{
-				if( c == B[j])    // eliminate common letters
-				{
-					B[j] = '_';
-					A[i] = '_';
-					count -= 2;
-					break;
-				}
-			}
+		for(i = 1; i <= 26; i++)
+		{   count1 = 0;
+		    count2 = 0;
+			
+		    for(j = 0; j < strlen(A); j++)
+		    {
+			if( 64+i == (toupper)A[j])    // eliminate common letters
+			    count1++;
+		    }
+		    for(l = 0; l < strlen(B); l++)
+		    {
+			if( 64+i == (toupper)B[l])    // eliminate common letters
+			    count2++;
+		    }
+		    
+		    if(count1 == count2)
+	                count -= 2 * count1;
+		    else if(count1 < count2)
+			count -= 2 * count1;
+		    else
+	                count -= 2 * count2;
 		}
 		
 		count = strlen(A) + strlen(B) + count; //total letters remaining
